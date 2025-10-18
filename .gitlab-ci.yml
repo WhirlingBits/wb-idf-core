@@ -1,3 +1,2 @@
 include:
   - local: .gitlab/ci/push_to_github.yml
-  - local: .gitlab/ci/build.yml
