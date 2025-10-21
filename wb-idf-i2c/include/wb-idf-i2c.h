@@ -37,6 +37,7 @@ extern i2c_master_bus_handle_t bus_handle;
  * and uses the configuration specified by CONFIG_I2C_NUM. If the bus is already initialized or if
  * initialization fails, it returns ESP_FAIL.
  *
+ * @param i2c_port The I2C port number to initialize.
  * @param i2c_scl The GPIO number for the I2C SCL pin.
  * @param i2c_sda The GPIO number for the I2C SDA pin.
  * @return esp_err_t Returns ESP_OK on success, or an error code if initialization fails.
