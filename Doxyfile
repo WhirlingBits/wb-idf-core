@@ -5,7 +5,7 @@ PROJECT_NAME           = "WB-IDF-Core"
 PROJECT_BRIEF          = "Whirlingbits IDF Core C Documentation"
 
 # Output formats
-OUTPUT_DIRECTORY       = doxygen/xml
+OUTPUT_DIRECTORY       = doxygen/
 GENERATE_HTML          = NO
 GENERATE_LATEX         = NO
 GENERATE_XML           = YES
