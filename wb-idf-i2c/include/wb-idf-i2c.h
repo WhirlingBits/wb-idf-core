@@ -4,7 +4,7 @@
  * @author Whirlingbits
  * @date 2024
  *
- * @defgroup wb_i2c I2C Master Driver
+ * @defgroup wb-idf-i2c I2C Master Driver
  * @brief High-level I2C master functions for ESP-IDF
  * 
  * This module provides a comprehensive I2C master driver with support for:
@@ -36,8 +36,8 @@ extern "C" {
 extern i2c_master_bus_handle_t bus_handle;
 
 /**
- * @defgroup wb_i2c_init Initialization & Management
- * @ingroup wb_i2c
+ * @defgroup wb_idf_i2c_init Initialization & Management
+ * @ingroup wb_idf_i2c
  * @brief Functions for I2C bus and device initialization
  * @{
  */
@@ -119,11 +119,11 @@ esp_err_t wb_i2c_master_bus_delete(i2c_master_bus_handle_t bus_handle);
  */
 esp_err_t wb_i2c_master_device_delete(i2c_master_dev_handle_t dev_handle);
 
-/** @} */ // end of wb_i2c_init
+/** @} */ // end of wb_idf_i2c_init
 
 /**
- * @defgroup wb_i2c_byte Byte Operations
- * @ingroup wb_i2c
+ * @defgroup wb_idf_i2c_byte Byte Operations
+ * @ingroup wb_idf_i2c
  * @brief Single and multi-byte read/write operations
  * @{
  */
@@ -185,8 +185,8 @@ esp_err_t wb_i2c_master_bus_write_multiple_bytes(i2c_master_dev_handle_t dev_han
 /** @} */ // end of wb_i2c_byte
 
 /**
- * @defgroup wb_i2c_bit Bit Operations
- * @ingroup wb_i2c
+ * @defgroup wb_idf_i2c_bit Bit Operations
+ * @ingroup wb_idf_i2c
  * @brief Bit-level read/write operations
  * 
  * These functions allow manipulation of individual bits within device registers
@@ -261,11 +261,11 @@ esp_err_t wb_i2c_master_bus_read_byte_bits(i2c_master_dev_handle_t dev_handle, u
  */
 esp_err_t wb_i2c_master_bus_write_byte_bits(i2c_master_dev_handle_t dev_handle, uint8_t mem_address, uint8_t bit_start, uint8_t length, uint8_t data);
 
-/** @} */ // end of wb_i2c_bit
+/** @} */ // end of wb_idf_i2c_bit
 
 /**
- * @defgroup wb_i2c_word Word Operations (16-bit)
- * @ingroup wb_i2c
+ * @defgroup wb_idf_i2c_word Word Operations (16-bit)
+ * @ingroup wb_idf_i2c
  * @brief 16-bit word read/write operations
  * 
  * These functions handle 16-bit registers, useful for devices with
@@ -359,9 +359,9 @@ esp_err_t wb_i2c_master_bus_read_word_bits(i2c_master_dev_handle_t dev_handle, u
  */
 esp_err_t wb_i2c_master_bus_write_word_bits(i2c_master_dev_handle_t dev_handle, uint8_t mem_address, uint8_t bit_start, uint8_t length, uint16_t data);
 
-/** @} */ // end of wb_i2c_word
+/** @} */ // end of wb_idf_i2c_word
 
-/** @} */ // end of wb_i2c
+/** @} */ // end of wb_idf_i2c
 
 #ifdef __cplusplus
 }
