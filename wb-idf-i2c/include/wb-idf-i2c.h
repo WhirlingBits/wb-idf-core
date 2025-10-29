@@ -4,7 +4,8 @@
  * @author Whirlingbits
  * @date 2024
  *
- * @defgroup wb-idf-i2c I2C Master Driver
+ * @defgroup wb_idf_i2c I2C Master Driver
+ * @ingroup wb_idf_core
  * @brief High-level I2C master functions for ESP-IDF
  * 
  * This module provides a comprehensive I2C master driver with support for:

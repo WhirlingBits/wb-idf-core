@@ -83,11 +83,11 @@ REFERENCES_LINK_SOURCE = YES
 # Configuration options related to directory structure
 #---------------------------------------------------------------------------
 
-SHOW_DIRECTORIES       = YES
-DIRECTORY_GRAPH        = YES
-SHOW_FILES             = YES
-SHOW_NAMESPACES        = YES
-SHOW_INCLUDE_FILES     = YES
+SHOW_DIRECTORIES       = NO
+DIRECTORY_GRAPH        = NO
+SHOW_FILES             = NO
+SHOW_NAMESPACES        = NO
+SHOW_INCLUDE_FILES     = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to groups/modules
@@ -114,7 +114,7 @@ INCLUDE_PATH           = ./wb-idf-i2c/include \
                          ./wb-idf-uart/include \
                          ./wb-idf-gpio/include
 
-INCLUDE_FILE_PATTERNS  = *.h *.hpp
+INCLUDE_FILE_PATTERNS  = *.h *.hpp *.dox
 
 # ESP-IDF specific macros
 PREDEFINED             = __attribute__(x)= \
@@ -235,7 +235,7 @@ INLINE_INHERITED_MEMB  = YES
 SORT_MEMBER_DOCS       = YES
 SORT_BRIEF_DOCS        = YES
 SORT_MEMBERS_CTORS_1ST = YES
-SORT_GROUP_NAMES       = YES
+SORT_GROUP_NAMES       = NO
 SORT_BY_SCOPE_NAME     = YES
 
 # Brief descriptions
