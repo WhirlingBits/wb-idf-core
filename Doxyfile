@@ -50,8 +50,8 @@ WARN_FORMAT            = "$file:$line: $text"
 # Multi-Repository Input (alle Sub-Repos)
 INPUT                  = ./wb-idf-i2c/include \
                          ./wb-idf-i2c/src \
-                         ./wb-idf-i2c/README.md \
-                         ./README.md
+                         ./wb-idf-i2c/wb-idf-i2c.dox \
+                         ./wb-idf-core.dox
 
 RECURSIVE              = YES
 FILE_PATTERNS          = *.c *.h *.cpp *.hpp *.md
@@ -63,7 +63,7 @@ EXCLUDE_PATTERNS       = */tests/* \
                          */node_modules/*
 
 # Use main README as mainpage
-USE_MDFILE_AS_MAINPAGE = ./README.md
+USE_MDFILE_AS_MAINPAGE = ./wb-idf-core.dox
 
 # Image path (falls Bilder in Dokumentation)
 IMAGE_PATH             = ./docs/images
