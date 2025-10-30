@@ -1,4 +1,4 @@
-# Doxyfile for wb-idf-core (Multi-Repository Support)
+# Doxyfile for wb-idf-core - Groups Only
 
 #---------------------------------------------------------------------------
 # Project related configuration options
@@ -23,12 +23,12 @@ EXTRACT_PRIVATE        = YES
 EXTRACT_STATIC         = YES
 EXTRACT_LOCAL_CLASSES  = YES
 EXTRACT_LOCAL_METHODS  = YES
-EXTRACT_ANON_NSPACES   = YES
+EXTRACT_ANON_NSPACES   = NO        # ✅ NO - keine Namespaces
 
 # Show undocumented for complete coverage
 HIDE_UNDOC_MEMBERS     = NO
 HIDE_UNDOC_CLASSES     = NO
-HIDE_FRIEND_COMPOUNDS  = NO
+HIDE_FRIEND_COMPOUNDS  = YES       # ✅ YES - verstecken
 HIDE_IN_BODY_DOCS      = NO
 
 #---------------------------------------------------------------------------
@@ -47,14 +47,14 @@ WARN_FORMAT            = "$file:$line: $text"
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 
-# Multi-Repository Input (alle Sub-Repos)
-INPUT                  = ./wb-idf-i2c/include \
-                         ./wb-idf-i2c/src \
+# Multi-Repository Input
+INPUT                  = ./wb-idf-core.dox \
                          ./wb-idf-i2c/wb-idf-i2c.dox \
-                         ./wb-idf-core.dox
+                         ./wb-idf-i2c/include \
+                         ./wb-idf-i2c/src
 
 RECURSIVE              = YES
-FILE_PATTERNS          = *.c *.h *.cpp *.hpp *.md
+FILE_PATTERNS          = *.c *.h *.cpp *.hpp *.dox
 EXCLUDE_PATTERNS       = */tests/* \
                          */test/* \
                          */build/* \
@@ -62,40 +62,37 @@ EXCLUDE_PATTERNS       = */tests/* \
                          */.git/* \
                          */node_modules/*
 
-# Use main README as mainpage
-USE_MDFILE_AS_MAINPAGE = ./wb-idf-core.dox
-
-# Image path (falls Bilder in Dokumentation)
 IMAGE_PATH             = ./docs/images
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
 #---------------------------------------------------------------------------
 
-SOURCE_BROWSER         = YES
+SOURCE_BROWSER         = NO        # ✅ NO - keine Source-Links
 INLINE_SOURCES         = NO
-STRIP_CODE_COMMENTS    = NO
-REFERENCED_BY_RELATION = YES
-REFERENCES_RELATION    = YES
-REFERENCES_LINK_SOURCE = YES
+STRIP_CODE_COMMENTS    = YES       # ✅ YES - sauberer
+REFERENCED_BY_RELATION = NO        # ✅ NO - weniger Referenzen
+REFERENCES_RELATION    = NO        # ✅ NO
+REFERENCES_LINK_SOURCE = NO        # ✅ NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to directory structure
 #---------------------------------------------------------------------------
 
-SHOW_DIRECTORIES       = NO
-DIRECTORY_GRAPH        = NO
-SHOW_FILES             = NO
-SHOW_NAMESPACES        = NO
-SHOW_INCLUDE_FILES     = NO
+SHOW_DIRECTORIES       = NO        # ✅ NO
+DIRECTORY_GRAPH        = NO        # ✅ NO
+SHOW_FILES             = NO        # ✅ NO
+SHOW_USED_FILES        = NO        # ✅ NO
+SHOW_NAMESPACES        = NO        # ✅ NO
+SHOW_INCLUDE_FILES     = NO        # ✅ NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to groups/modules
 #---------------------------------------------------------------------------
 
-DISTRIBUTE_GROUP_DOC   = YES
-GROUP_GRAPHS           = YES
-SUBGROUPING            = YES
+DISTRIBUTE_GROUP_DOC   = YES       # ✅ Dokumentation in Gruppen
+GROUP_GRAPHS           = YES       # ✅ Gruppen-Graphen
+SUBGROUPING            = YES       # ✅ Hierarchie!
 INLINE_GROUPED_CLASSES = YES
 INLINE_SIMPLE_STRUCTS  = YES
 
@@ -108,13 +105,10 @@ MACRO_EXPANSION        = YES
 EXPAND_ONLY_PREDEF     = NO
 SEARCH_INCLUDES        = YES
 
-# Include paths for all sub-repos
-INCLUDE_PATH           = ./wb-idf-i2c/include \
-                         ./wb-idf-spi/include \
-                         ./wb-idf-uart/include \
-                         ./wb-idf-gpio/include
+# Include paths
+INCLUDE_PATH           = ./wb-idf-i2c/include
 
-INCLUDE_FILE_PATTERNS  = *.h *.hpp *.dox
+INCLUDE_FILE_PATTERNS  = *.h *.hpp
 
 # ESP-IDF specific macros
 PREDEFINED             = __attribute__(x)= \
@@ -135,83 +129,60 @@ PREDEFINED             = __attribute__(x)= \
 GENERATE_TAGFILE       = doxygen/wb-idf-core.tag
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
-EXTERNAL_PAGES         = YES
+EXTERNAL_PAGES         = NO        # ✅ NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to the output formats
 #---------------------------------------------------------------------------
 
-# HTML Output (disabled for doxygen2docusaurus)
+# HTML Output (disabled)
 GENERATE_HTML          = NO
-HTML_OUTPUT            = html
-HTML_FILE_EXTENSION    = .html
 
-# LaTeX Output (disabled)
-GENERATE_LATEX         = NO
-
-# XML Output (required for doxygen2docusaurus)
+# XML Output (required)
 GENERATE_XML           = YES
 XML_OUTPUT             = xml
 XML_PROGRAMLISTING     = YES
-XML_NS_MEMB_FILE_SCOPE = YES
+XML_NS_MEMB_FILE_SCOPE = NO        # ✅ NO - keine File-Scopes
 
-# RTF Output (disabled)
+# All other outputs disabled
+GENERATE_LATEX         = NO
 GENERATE_RTF           = NO
-
-# Man page output (disabled)
 GENERATE_MAN           = NO
-
-# DocBook output (disabled)
 GENERATE_DOCBOOK       = NO
-
-# AutoGen Definitions (disabled)
 GENERATE_AUTOGEN_DEF   = NO
-
-# Perl Module output (disabled)
 GENERATE_PERLMOD       = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to the dot tool
 #---------------------------------------------------------------------------
 
-CLASS_DIAGRAMS         = YES
-HIDE_UNDOC_RELATIONS   = NO
+CLASS_DIAGRAMS         = NO        # ✅ NO
+HIDE_UNDOC_RELATIONS   = YES       # ✅ YES
 HAVE_DOT               = YES
 DOT_NUM_THREADS        = 4
 DOT_FONTNAME           = Helvetica
 DOT_FONTSIZE           = 10
-DOT_FONTPATH           = 
 
-CLASS_GRAPH            = YES
-COLLABORATION_GRAPH    = YES
-GROUP_GRAPHS           = YES
+CLASS_GRAPH            = NO        # ✅ NO
+COLLABORATION_GRAPH    = NO        # ✅ NO
+GROUP_GRAPHS           = YES       # ✅ YES - nur Groups
 UML_LOOK               = NO
-UML_LIMIT_NUM_FIELDS   = 10
-TEMPLATE_RELATIONS     = YES
-INCLUDE_GRAPH          = YES
-INCLUDED_BY_GRAPH      = YES
+TEMPLATE_RELATIONS     = NO        # ✅ NO
+INCLUDE_GRAPH          = NO        # ✅ NO
+INCLUDED_BY_GRAPH      = NO        # ✅ NO
 CALL_GRAPH             = NO
 CALLER_GRAPH           = NO
-GRAPHICAL_HIERARCHY    = YES
-DIRECTORY_GRAPH        = YES
+GRAPHICAL_HIERARCHY    = NO        # ✅ NO
+DIRECTORY_GRAPH        = NO        # ✅ NO
 
 DOT_IMAGE_FORMAT       = svg
 INTERACTIVE_SVG        = YES
-DOT_PATH               = 
-DOTFILE_DIRS           = 
-MSCFILE_DIRS           = 
-DIAFILE_DIRS           = 
-PLANTUML_JAR_PATH      = 
-
 DOT_GRAPH_MAX_NODES    = 50
-MAX_DOT_GRAPH_DEPTH    = 0
 DOT_TRANSPARENT        = YES
-DOT_MULTI_TARGETS      = YES
-GENERATE_LEGEND        = YES
-DOT_CLEANUP            = YES
+GENERATE_LEGEND        = NO        # ✅ NO
 
 #---------------------------------------------------------------------------
-# Markdown support (improved for MDX compatibility)
+# Markdown support
 #---------------------------------------------------------------------------
 
 MARKDOWN_SUPPORT       = YES
@@ -223,45 +194,32 @@ TOC_INCLUDE_HEADINGS   = 5
 # Configuration options for better Docusaurus integration
 #---------------------------------------------------------------------------
 
-FULL_PATH_NAMES        = YES
+FULL_PATH_NAMES        = NO        # ✅ NO - kurze Namen
 STRIP_FROM_PATH        = ./
-STRIP_FROM_INC_PATH    = ./wb-idf-i2c/include \
-                         ./wb-idf-spi/include \
-                         ./wb-idf-uart/include \
-                         ./wb-idf-gpio/include
+STRIP_FROM_INC_PATH    = ./wb-idf-i2c/include
 
 # Optimize for clean XML output
 INLINE_INHERITED_MEMB  = YES
 SORT_MEMBER_DOCS       = YES
 SORT_BRIEF_DOCS        = YES
 SORT_MEMBERS_CTORS_1ST = YES
-SORT_GROUP_NAMES       = NO
-SORT_BY_SCOPE_NAME     = YES
+SORT_GROUP_NAMES       = NO        # ✅ NO - Hierarchie behalten
+SORT_BY_SCOPE_NAME     = NO        # ✅ NO
 
 # Brief descriptions
 BRIEF_MEMBER_DESC      = YES
-REPEAT_BRIEF           = YES
+REPEAT_BRIEF           = NO        # ✅ NO - kein "More..."
 ALWAYS_DETAILED_SEC    = YES
-INLINE_INHERITED_MEMB  = YES
 JAVADOC_AUTOBRIEF      = YES
 QT_AUTOBRIEF           = YES
 MULTILINE_CPP_IS_BRIEF = NO
 
 # Build related
 CASE_SENSE_NAMES       = YES
-SHOW_USED_FILES        = YES
-SHOW_FILES             = YES
-SHOW_NAMESPACES        = YES
 LAYOUT_FILE            = 
 
-# Input filter (optional, für spezielle Dateien)
-INPUT_FILTER           = 
-FILTER_PATTERNS        = 
-FILTER_SOURCE_FILES    = NO
-FILTER_SOURCE_PATTERNS = 
-
 # Alphabetical index
-ALPHABETICAL_INDEX     = YES
+ALPHABETICAL_INDEX     = NO        # ✅ NO
 COLS_IN_ALPHA_INDEX    = 5
 IGNORE_PREFIX          = wb_
 
@@ -288,7 +246,7 @@ OPTIMIZE_OUTPUT_VHDL   = NO
 OPTIMIZE_OUTPUT_SLICE  = NO
 
 # Extension mapping
-EXTENSION_MAPPING      = h=C
+EXTENSION_MAPPING      = h=C dox=C
 
 # Misc options
 INHERIT_DOCS           = YES
@@ -300,9 +258,6 @@ ALIASES                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_SYMBOLS        = 
 
-# Search engine (disabled for Docusaurus)
+# Search engine (disabled)
 SEARCHENGINE           = NO
 SERVER_BASED_SEARCH    = NO
-
-# Generate tag file for external projects
-GENERATE_TAGFILE       = doxygen/wb-idf-core.tag

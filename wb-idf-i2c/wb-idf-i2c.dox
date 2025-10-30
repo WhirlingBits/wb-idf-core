@@ -1,6 +1,5 @@
 /**
  * @defgroup wb_idf_i2c I2C Master Driver
- * @ingroup wb_idf_core
  * @brief Comprehensive I2C master functionality for ESP-IDF
  * 
  * @section wb_idf_i2c_overview Overview
@@ -51,32 +50,32 @@
  * The I2C API is organized into the following functional modules. 
  * Click on each module to see the detailed API documentation:
  * 
- * ### @ref wb_i2c_init "Initialization & Management"
+ * ### @ref wb_idf_i2c_init "Initialization & Management"
  * 
  * Functions for setting up I2C buses and managing device handles.
  * Covers bus initialization, device creation, and device detection.
  * 
- * ### @ref wb_i2c_byte "Byte Operations"
+ * ### @ref wb_idf_i2c_byte "Byte Operations"
  * 
  * Standard byte-level I/O operations for reading and writing registers.
  * Includes single-byte and multi-byte transfers.
  * 
- * ### @ref wb_i2c_bit "Bit Operations"
+ * ### @ref wb_idf_i2c_bit "Bit Operations"
  * 
  * Bit-level register manipulation for fine-grained control.
  * Enables reading and writing individual bits or bit ranges.
  * 
- * ### @ref wb_i2c_word "Word Operations (16-bit)"
+ * ### @ref wb_idf_i2c_word "Word Operations (16-bit)"
  * 
  * 16-bit register access with automatic byte order handling.
  * Supports both big-endian and little-endian devices.
  * 
  * @section wb_idf_i2c_workflow Typical Usage Workflow
  * 
- * 1. **Initialize** - Set up I2C bus → See @ref wb_i2c_init
- * 2. **Create Device** - Create handle for your I2C device → See @ref wb_i2c_init
- * 3. **Communicate** - Use @ref wb_i2c_byte, @ref wb_i2c_bit, or @ref wb_i2c_word operations
- * 4. **Cleanup** - Delete device handle and bus handle → See @ref wb_i2c_init
+ * 1. **Initialize** - Set up I2C bus → See @ref wb_idf_i2c_init
+ * 2. **Create Device** - Create handle for your I2C device → See @ref wb_idf_i2c_init
+ * 3. **Communicate** - Use @ref wb_idf_i2c_byte, @ref wb_idf_i2c_bit, or @ref wb_idf_i2c_word operations
+ * 4. **Cleanup** - Delete device handle and bus handle → See @ref wb_idf_i2c_init
  * 
  * For detailed API documentation and code examples, see the individual module pages.
  * 
