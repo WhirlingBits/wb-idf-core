@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doxygenlayout version="1.0">
+  <!-- Flache Navigation: Jede Group als eigener Tab -->
+  <navindex>
+    <tab type="mainpage" visible="yes" title="Main Page"/>
+    
+    <!-- I2C Master Driver als Haupt-Tab mit Sub-Tabs -->
+    <tab type="user" url="@ref wb_idf_i2c" title="I2C Master Driver">
+      <tab type="user" url="@ref wb_idf_i2c_init" title="Initialization"/>
+      <tab type="user" url="@ref wb_idf_i2c_byte" title="Byte Operations"/>
+      <tab type="user" url="@ref wb_idf_i2c_bit" title="Bit Operations"/>
+      <tab type="user" url="@ref wb_idf_i2c_word" title="Word Operations"/>
+    </tab>
+    
+    <!-- Weitere Components hier hinzufügen -->
+    <!-- <tab type="user" url="@ref wb_idf_spi" title="SPI Master Driver"/> -->
+  </navindex>
+
+  <!-- Group Layout (für die Seiten selbst) -->
+  <group>
+    <briefdescription visible="yes"/>
+    <groupgraph visible="yes"/>
+    <detaileddescription title=""/>
+    <memberdecl>
+      <nestedgroups visible="yes" title="Sub-Modules"/>
+      <dirs visible="no"/>
+      <files visible="no"/>
+      <namespaces visible="no"/>
+      <classes visible="yes" title=""/>
+      <defines title=""/>
+      <typedefs title=""/>
+      <enums title=""/>
+      <enumvalues title=""/>
+      <functions title=""/>
+      <variables title=""/>
+    </memberdecl>
+    <memberdef>
+      <defines title=""/>
+      <typedefs title=""/>
+      <enums title=""/>
+      <enumvalues title=""/>
+      <functions title=""/>
+      <variables title=""/>
+    </memberdef>
+  </group>
+</doxygenlayout>
