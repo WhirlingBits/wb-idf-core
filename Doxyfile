@@ -1,12 +1,12 @@
-# Doxyfile for wb-idf-core - Groups Only
+# Doxyfile for wb-idf-core - Groups Only (Optimized)
 
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
 
 PROJECT_NAME           = "WB-IDF-Core"
-PROJECT_BRIEF          = "Whirlingbits IDF Core C Documentation"
-PROJECT_NUMBER         = $(shell git describe --tags --always)
+PROJECT_BRIEF          = "WhirlingBits ESP-IDF Core Components"
+PROJECT_NUMBER         = "1.0.0"
 PROJECT_LOGO           = 
 
 #---------------------------------------------------------------------------
@@ -19,17 +19,17 @@ OUTPUT_LANGUAGE        = English
 
 # Extract everything for complete documentation
 EXTRACT_ALL            = YES
-EXTRACT_PRIVATE        = YES
+EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = YES
-EXTRACT_LOCAL_CLASSES  = YES
-EXTRACT_LOCAL_METHODS  = YES
-EXTRACT_ANON_NSPACES   = NO        # ✅ NO - keine Namespaces
+EXTRACT_LOCAL_CLASSES  = NO
+EXTRACT_LOCAL_METHODS  = NO
+EXTRACT_ANON_NSPACES   = NO
 
-# Show undocumented for complete coverage
+# Hide undocumented for cleaner output
 HIDE_UNDOC_MEMBERS     = NO
-HIDE_UNDOC_CLASSES     = NO
-HIDE_FRIEND_COMPOUNDS  = YES       # ✅ YES - verstecken
-HIDE_IN_BODY_DOCS      = NO
+HIDE_UNDOC_CLASSES     = YES
+HIDE_FRIEND_COMPOUNDS  = YES
+HIDE_IN_BODY_DOCS      = YES
 
 #---------------------------------------------------------------------------
 # Configuration options related to warning and progress messages
@@ -47,14 +47,19 @@ WARN_FORMAT            = "$file:$line: $text"
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 
-# Multi-Repository Input
-INPUT                  = ./wb-idf-core.dox \
-                         ./wb-idf-i2c/wb-idf-i2c.dox \
+# Multi-Repository Input (simplified with RECURSIVE)
+INPUT                  = . \
                          ./wb-idf-i2c/include \
                          ./wb-idf-i2c/src
 
 RECURSIVE              = YES
-FILE_PATTERNS          = *.c *.h *.cpp *.hpp *.dox
+
+FILE_PATTERNS          = *.c \
+                         *.h \
+                         *.cpp \
+                         *.hpp \
+                         *.dox
+
 EXCLUDE_PATTERNS       = */tests/* \
                          */test/* \
                          */build/* \
@@ -62,37 +67,38 @@ EXCLUDE_PATTERNS       = */tests/* \
                          */.git/* \
                          */node_modules/*
 
-IMAGE_PATH             = ./docs/images
+# ❌ Entfernt: IMAGE_PATH (Verzeichnis existiert nicht)
+# IMAGE_PATH             = ./docs/images
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
 #---------------------------------------------------------------------------
 
-SOURCE_BROWSER         = NO        # ✅ NO - keine Source-Links
+SOURCE_BROWSER         = NO
 INLINE_SOURCES         = NO
-STRIP_CODE_COMMENTS    = YES       # ✅ YES - sauberer
-REFERENCED_BY_RELATION = NO        # ✅ NO - weniger Referenzen
-REFERENCES_RELATION    = NO        # ✅ NO
-REFERENCES_LINK_SOURCE = NO        # ✅ NO
+STRIP_CODE_COMMENTS    = YES
+REFERENCED_BY_RELATION = NO
+REFERENCES_RELATION    = NO
+REFERENCES_LINK_SOURCE = NO
+VERBATIM_HEADERS       = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to directory structure
 #---------------------------------------------------------------------------
 
-SHOW_DIRECTORIES       = NO        # ✅ NO
-DIRECTORY_GRAPH        = NO        # ✅ NO
-SHOW_FILES             = NO        # ✅ NO
-SHOW_USED_FILES        = NO        # ✅ NO
-SHOW_NAMESPACES        = NO        # ✅ NO
-SHOW_INCLUDE_FILES     = NO        # ✅ NO
+# ❌ Entfernt: SHOW_DIRECTORIES (obsolet in Doxygen 1.9.8)
+DIRECTORY_GRAPH        = NO
+SHOW_FILES             = NO
+SHOW_NAMESPACES        = NO
+SHOW_INCLUDE_FILES     = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to groups/modules
 #---------------------------------------------------------------------------
 
-DISTRIBUTE_GROUP_DOC   = YES       # ✅ Dokumentation in Gruppen
-GROUP_GRAPHS           = YES       # ✅ Gruppen-Graphen
-SUBGROUPING            = YES       # ✅ Hierarchie!
+DISTRIBUTE_GROUP_DOC   = YES
+GROUP_GRAPHS           = YES
+SUBGROUPING            = YES       # ✅ WICHTIG: Zeigt Hierarchie!
 INLINE_GROUPED_CLASSES = YES
 INLINE_SIMPLE_STRUCTS  = YES
 
@@ -108,7 +114,9 @@ SEARCH_INCLUDES        = YES
 # Include paths
 INCLUDE_PATH           = ./wb-idf-i2c/include
 
-INCLUDE_FILE_PATTERNS  = *.h *.hpp
+INCLUDE_FILE_PATTERNS  = *.h \
+                         *.hpp \
+                         *.dox
 
 # ESP-IDF specific macros
 PREDEFINED             = __attribute__(x)= \
@@ -129,20 +137,20 @@ PREDEFINED             = __attribute__(x)= \
 GENERATE_TAGFILE       = doxygen/wb-idf-core.tag
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
-EXTERNAL_PAGES         = NO        # ✅ NO
+EXTERNAL_PAGES         = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to the output formats
 #---------------------------------------------------------------------------
 
-# HTML Output (disabled)
+# HTML Output (disabled for XML-only)
 GENERATE_HTML          = NO
 
-# XML Output (required)
+# XML Output (required for Docusaurus)
 GENERATE_XML           = YES
 XML_OUTPUT             = xml
 XML_PROGRAMLISTING     = YES
-XML_NS_MEMB_FILE_SCOPE = NO        # ✅ NO - keine File-Scopes
+XML_NS_MEMB_FILE_SCOPE = NO
 
 # All other outputs disabled
 GENERATE_LATEX         = NO
@@ -156,30 +164,32 @@ GENERATE_PERLMOD       = NO
 # Configuration options related to the dot tool
 #---------------------------------------------------------------------------
 
-CLASS_DIAGRAMS         = NO        # ✅ NO
-HIDE_UNDOC_RELATIONS   = YES       # ✅ YES
+# ❌ Entfernt: CLASS_DIAGRAMS (obsolet in Doxygen 1.9.8)
+HIDE_UNDOC_RELATIONS   = YES
 HAVE_DOT               = YES
 DOT_NUM_THREADS        = 4
-DOT_FONTNAME           = Helvetica
-DOT_FONTSIZE           = 10
 
-CLASS_GRAPH            = NO        # ✅ NO
-COLLABORATION_GRAPH    = NO        # ✅ NO
-GROUP_GRAPHS           = YES       # ✅ YES - nur Groups
+# ❌ Entfernt: DOT_FONTNAME (obsolet in Doxygen 1.9.8)
+# ❌ Entfernt: DOT_FONTSIZE (obsolet in Doxygen 1.9.8)
+
+CLASS_GRAPH            = NO
+COLLABORATION_GRAPH    = NO
+GROUP_GRAPHS           = YES       # ✅ Zeigt Group-Hierarchie
 UML_LOOK               = NO
-TEMPLATE_RELATIONS     = NO        # ✅ NO
-INCLUDE_GRAPH          = NO        # ✅ NO
-INCLUDED_BY_GRAPH      = NO        # ✅ NO
+TEMPLATE_RELATIONS     = NO
+INCLUDE_GRAPH          = NO
+INCLUDED_BY_GRAPH      = NO
 CALL_GRAPH             = NO
 CALLER_GRAPH           = NO
-GRAPHICAL_HIERARCHY    = NO        # ✅ NO
-DIRECTORY_GRAPH        = NO        # ✅ NO
+GRAPHICAL_HIERARCHY    = NO
+DIRECTORY_GRAPH        = NO
 
 DOT_IMAGE_FORMAT       = svg
 INTERACTIVE_SVG        = YES
 DOT_GRAPH_MAX_NODES    = 50
-DOT_TRANSPARENT        = YES
-GENERATE_LEGEND        = NO        # ✅ NO
+
+# ❌ Entfernt: DOT_TRANSPARENT (obsolet in Doxygen 1.9.8)
+GENERATE_LEGEND        = NO
 
 #---------------------------------------------------------------------------
 # Markdown support
@@ -194,7 +204,7 @@ TOC_INCLUDE_HEADINGS   = 5
 # Configuration options for better Docusaurus integration
 #---------------------------------------------------------------------------
 
-FULL_PATH_NAMES        = NO        # ✅ NO - kurze Namen
+FULL_PATH_NAMES        = NO
 STRIP_FROM_PATH        = ./
 STRIP_FROM_INC_PATH    = ./wb-idf-i2c/include
 
@@ -203,12 +213,12 @@ INLINE_INHERITED_MEMB  = YES
 SORT_MEMBER_DOCS       = YES
 SORT_BRIEF_DOCS        = YES
 SORT_MEMBERS_CTORS_1ST = YES
-SORT_GROUP_NAMES       = NO        # ✅ NO - Hierarchie behalten
-SORT_BY_SCOPE_NAME     = NO        # ✅ NO
+SORT_GROUP_NAMES       = NO        # ✅ NO - Hierarchie behalten!
+SORT_BY_SCOPE_NAME     = NO
 
 # Brief descriptions
 BRIEF_MEMBER_DESC      = YES
-REPEAT_BRIEF           = NO        # ✅ NO - kein "More..."
+REPEAT_BRIEF           = NO
 ALWAYS_DETAILED_SEC    = YES
 JAVADOC_AUTOBRIEF      = YES
 QT_AUTOBRIEF           = YES
@@ -216,11 +226,13 @@ MULTILINE_CPP_IS_BRIEF = NO
 
 # Build related
 CASE_SENSE_NAMES       = YES
-LAYOUT_FILE            = 
+
+# Layout file für Navigation
+LAYOUT_FILE            = DoxygenLayout.xml
 
 # Alphabetical index
-ALPHABETICAL_INDEX     = NO        # ✅ NO
-COLS_IN_ALPHA_INDEX    = 5
+ALPHABETICAL_INDEX     = NO
+# ❌ Entfernt: COLS_IN_ALPHA_INDEX (obsolet in Doxygen 1.9.8)
 IGNORE_PREFIX          = wb_
 
 #---------------------------------------------------------------------------
@@ -246,7 +258,8 @@ OPTIMIZE_OUTPUT_VHDL   = NO
 OPTIMIZE_OUTPUT_SLICE  = NO
 
 # Extension mapping
-EXTENSION_MAPPING      = h=C dox=C
+EXTENSION_MAPPING      = h=C \
+                         dox=C
 
 # Misc options
 INHERIT_DOCS           = YES
@@ -261,3 +274,9 @@ EXCLUDE_SYMBOLS        =
 # Search engine (disabled)
 SEARCHENGINE           = NO
 SERVER_BASED_SEARCH    = NO
+
+#---------------------------------------------------------------------------
+# Custom configuration for mainpage
+#---------------------------------------------------------------------------
+
+# @mainpage aus wb-idf-core.dox wird automatisch verwendet
