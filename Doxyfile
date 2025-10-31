@@ -6,7 +6,7 @@
 
 PROJECT_NAME           = "WB-IDF-Core"
 PROJECT_BRIEF          = "WhirlingBits ESP-IDF Core Components"
-PROJECT_NUMBER         = "1.0.0"
+PROJECT_NUMBER         = $(shell git describe --tags --always --dirty)
 PROJECT_LOGO           = 
 
 #---------------------------------------------------------------------------
