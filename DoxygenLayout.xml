@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <doxygenlayout version="1.0">
+  <!-- Flache Navigation: Jede Group als eigener Tab -->
   <navindex>
     <tab type="mainpage" visible="yes" title="Main Page"/>
     
@@ -10,15 +11,18 @@
       <tab type="user" url="@ref wb_idf_i2c_bit" title="Bit Operations"/>
       <tab type="user" url="@ref wb_idf_i2c_word" title="Word Operations"/>
     </tab>
+    
+    <!-- Weitere Components hier hinzufügen -->
+    <!-- <tab type="user" url="@ref wb_idf_spi" title="SPI Master Driver"/> -->
   </navindex>
 
   <!-- Group Layout (für die Seiten selbst) -->
   <group>
     <briefdescription visible="yes"/>
-    <groupgraph visible="no"/>  <!-- ❌ Kein Graph -->
+    <groupgraph visible="yes"/>
     <detaileddescription title=""/>
     <memberdecl>
-      <nestedgroups visible="no" title=""/>  <!-- ❌ Verstecke Sub-Groups -->
+      <nestedgroups visible="yes" title="Sub-Modules"/>
       <dirs visible="no"/>
       <files visible="no"/>
       <namespaces visible="no"/>
