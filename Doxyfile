@@ -50,7 +50,8 @@ WARN_FORMAT            = "$file:$line: $text"
 # Multi-Repository Input (simplified with RECURSIVE)
 INPUT                  = . \
                          ./wb-idf-i2c/include \
-                         ./wb-idf-i2c/src
+                         ./wb-idf-i2c/src \
+                         ./wb-idf-i2c/examples
 
 RECURSIVE              = YES
 
@@ -58,14 +59,22 @@ FILE_PATTERNS          = *.c \
                          *.h \
                          *.cpp \
                          *.hpp \
-                         *.dox
+                         *.dox \
+                         *.md
 
 EXCLUDE_PATTERNS       = */tests/* \
                          */test/* \
                          */build/* \
-                         */examples/* \
                          */.git/* \
                          */node_modules/*
+
+EXAMPLE_PATH           = ./wb-idf-i2c/examples \
+
+EXAMPLE_PATTERNS       = *.c \
+                         *.cpp \
+                         *.h
+
+EXAMPLE_RECURSIVE      = YES
 
 # ❌ Entfernt: IMAGE_PATH (Verzeichnis existiert nicht)
 # IMAGE_PATH             = ./docs/images
