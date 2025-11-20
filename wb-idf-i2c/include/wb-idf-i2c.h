@@ -6,13 +6,6 @@
  *
  * @defgroup wb_idf_i2c I2C Master Driver
  * @ingroup wb_idf_core
- * @brief High-level I2C master functions for ESP-IDF
- * 
- * This module provides a comprehensive I2C master driver with support for:
- * - Bus initialization and device management
- * - Byte-level read/write operations
- * - Bit-level manipulation
- * - Word (16-bit) operations
  * 
  * @{
  */
