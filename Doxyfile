@@ -17,7 +17,6 @@ OUTPUT_DIRECTORY       = doxygen/
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
 
-# Extract everything for complete documentation
 EXTRACT_ALL            = NO
 EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = YES
@@ -25,7 +24,6 @@ EXTRACT_LOCAL_CLASSES  = NO
 EXTRACT_LOCAL_METHODS  = NO
 EXTRACT_ANON_NSPACES   = NO
 
-# Hide undocumented for cleaner output
 HIDE_UNDOC_MEMBERS     = NO
 HIDE_UNDOC_CLASSES     = YES
 HIDE_FRIEND_COMPOUNDS  = YES
@@ -47,20 +45,22 @@ WARN_FORMAT            = "$file:$line: $text"
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 
-# Multi-Repository Input (simplified with RECURSIVE)
-INPUT                  = . \
+# ✅ FIX: .dox Dateien ZUERST verarbeiten!
+INPUT                  = ./wb-idf-core.dox \
+                         ./wb-idf-i2c/wb-idf-i2c.dox \
                          ./wb-idf-i2c/include \
                          ./wb-idf-i2c/src \
                          ./wb-idf-i2c/examples
 
 RECURSIVE              = YES
 
-FILE_PATTERNS          = *.c \
+# ✅ FIX: .dox VOR .h in FILE_PATTERNS
+FILE_PATTERNS          = *.dox \
+                         *.md \
                          *.h \
+                         *.c \
                          *.cpp \
-                         *.hpp \
-                         *.dox \
-                         *.md
+                         *.hpp
 
 EXCLUDE_PATTERNS       = */tests/* \
                          */test/* \
@@ -68,16 +68,13 @@ EXCLUDE_PATTERNS       = */tests/* \
                          */.git/* \
                          */node_modules/*
 
-EXAMPLE_PATH           = ./wb-idf-i2c/examples \
+EXAMPLE_PATH           = ./wb-idf-i2c/examples
 
 EXAMPLE_PATTERNS       = *.c \
                          *.cpp \
                          *.h
 
 EXAMPLE_RECURSIVE      = YES
-
-# ❌ Entfernt: IMAGE_PATH (Verzeichnis existiert nicht)
-# IMAGE_PATH             = ./docs/images
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing
@@ -95,7 +92,6 @@ VERBATIM_HEADERS       = NO
 # Configuration options related to directory structure
 #---------------------------------------------------------------------------
 
-# ❌ Entfernt: SHOW_DIRECTORIES (obsolet in Doxygen 1.9.8)
 DIRECTORY_GRAPH        = NO
 SHOW_FILES             = NO
 SHOW_NAMESPACES        = NO
@@ -107,7 +103,7 @@ SHOW_INCLUDE_FILES     = NO
 
 DISTRIBUTE_GROUP_DOC   = YES
 GROUP_GRAPHS           = YES
-SUBGROUPING            = YES       # ✅ WICHTIG: Zeigt Hierarchie!
+SUBGROUPING            = YES
 INLINE_GROUPED_CLASSES = YES
 INLINE_SIMPLE_STRUCTS  = YES
 
@@ -120,7 +116,6 @@ MACRO_EXPANSION        = YES
 EXPAND_ONLY_PREDEF     = NO
 SEARCH_INCLUDES        = YES
 
-# Include paths
 INCLUDE_PATH           = ./wb-idf-i2c/include
 
 INCLUDE_FILE_PATTERNS  = *.h \
@@ -152,16 +147,13 @@ EXTERNAL_PAGES         = NO
 # Configuration options related to the output formats
 #---------------------------------------------------------------------------
 
-# HTML Output (disabled for XML-only)
 GENERATE_HTML          = NO
 
-# XML Output (required for Docusaurus)
 GENERATE_XML           = YES
 XML_OUTPUT             = xml
 XML_PROGRAMLISTING     = YES
 XML_NS_MEMB_FILE_SCOPE = NO
 
-# All other outputs disabled
 GENERATE_LATEX         = NO
 GENERATE_RTF           = NO
 GENERATE_MAN           = NO
@@ -173,17 +165,13 @@ GENERATE_PERLMOD       = NO
 # Configuration options related to the dot tool
 #---------------------------------------------------------------------------
 
-# ❌ Entfernt: CLASS_DIAGRAMS (obsolet in Doxygen 1.9.8)
 HIDE_UNDOC_RELATIONS   = YES
 HAVE_DOT               = YES
 DOT_NUM_THREADS        = 4
 
-# ❌ Entfernt: DOT_FONTNAME (obsolet in Doxygen 1.9.8)
-# ❌ Entfernt: DOT_FONTSIZE (obsolet in Doxygen 1.9.8)
-
 CLASS_GRAPH            = NO
 COLLABORATION_GRAPH    = NO
-GROUP_GRAPHS           = YES       # ✅ Zeigt Group-Hierarchie
+GROUP_GRAPHS           = YES
 UML_LOOK               = NO
 TEMPLATE_RELATIONS     = NO
 INCLUDE_GRAPH          = NO
@@ -197,7 +185,6 @@ DOT_IMAGE_FORMAT       = svg
 INTERACTIVE_SVG        = YES
 DOT_GRAPH_MAX_NODES    = 50
 
-# ❌ Entfernt: DOT_TRANSPARENT (obsolet in Doxygen 1.9.8)
 GENERATE_LEGEND        = NO
 
 #---------------------------------------------------------------------------
@@ -217,15 +204,13 @@ FULL_PATH_NAMES        = NO
 STRIP_FROM_PATH        = ./
 STRIP_FROM_INC_PATH    = ./wb-idf-i2c/include
 
-# Optimize for clean XML output
 INLINE_INHERITED_MEMB  = YES
 SORT_MEMBER_DOCS       = YES
 SORT_BRIEF_DOCS        = YES
 SORT_MEMBERS_CTORS_1ST = YES
-SORT_GROUP_NAMES       = NO        # ✅ NO - Hierarchie behalten!
+SORT_GROUP_NAMES       = NO
 SORT_BY_SCOPE_NAME     = NO
 
-# Brief descriptions
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = NO
 ALWAYS_DETAILED_SEC    = YES
@@ -233,15 +218,11 @@ JAVADOC_AUTOBRIEF      = YES
 QT_AUTOBRIEF           = YES
 MULTILINE_CPP_IS_BRIEF = NO
 
-# Build related
 CASE_SENSE_NAMES       = YES
 
-# Layout file für Navigation
 LAYOUT_FILE            = DoxygenLayout.xml
 
-# Alphabetical index
 ALPHABETICAL_INDEX     = NO
-# ❌ Entfernt: COLS_IN_ALPHA_INDEX (obsolet in Doxygen 1.9.8)
 IGNORE_PREFIX          = wb_
 
 #---------------------------------------------------------------------------
@@ -259,33 +240,23 @@ LOOKUP_CACHE_SIZE      = 0
 # Additional configuration
 #---------------------------------------------------------------------------
 
-# Optimize output for C
 OPTIMIZE_OUTPUT_FOR_C  = YES
 OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
 OPTIMIZE_OUTPUT_VHDL   = NO
 OPTIMIZE_OUTPUT_SLICE  = NO
 
-# Extension mapping
+# ✅ FIX: Extension mapping für .dox
 EXTENSION_MAPPING      = h=C \
                          dox=C
 
-# Misc options
 INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 4
 ALIASES                = 
 
-# Excluded symbols
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_SYMBOLS        = 
 
-# Search engine (disabled)
 SEARCHENGINE           = NO
 SERVER_BASED_SEARCH    = NO
-
-#---------------------------------------------------------------------------
-# Custom configuration for mainpage
-#---------------------------------------------------------------------------
-
-# @mainpage aus wb-idf-core.dox wird automatisch verwendet
