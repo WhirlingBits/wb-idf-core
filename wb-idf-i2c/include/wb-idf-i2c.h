@@ -4,7 +4,6 @@
  * @author Whirlingbits
  * @date 2024
  *
- * @defgroup wb_idf_i2c I2C Master Driver
  * @ingroup wb_idf_core
  * 
  * @{
