@@ -30,30 +30,24 @@
  * 
  * The driver follows a layered architecture:
  * 
- * @code{.txt}
- * ┌─────────────────────────────────────┐
- * │      Application Layer              │
- * │  (Your sensor/device drivers)       │
- * └──────────────┬──────────────────────┘
- *                │
- * ┌──────────────▼──────────────────────┐
- * │  wb-idf-i2c High-Level API          │ ← This Component
- * ├─────────────────────────────────────┤
- * │  • Device Management                │
- * │  • Byte/Bit/Word Operations         │
- * │  • Error Handling & Validation      │
- * └──────────────┬──────────────────────┘
- *                │
- * ┌──────────────▼──────────────────────┐
- * │  ESP-IDF I2C Master Driver          │
- * │  (driver/i2c_master.h)              │
- * └──────────────┬──────────────────────┘
- *                │
- * ┌──────────────▼──────────────────────┐
- * │  I2C Hardware Peripheral            │
- * │  (ESP32 I2C Controller)             │
- * └─────────────────────────────────────┘
- * @endcode
+ * @mermaid
+ * graph TD
+ *     A[Application Layer<br/>Your sensor/device drivers]
+ *     B[wb-idf-i2c High-Level API<br/>This Component]
+ *     C[ESP-IDF I2C Master Driver<br/>driver/i2c_master.h]
+ *     D[I2C Hardware Peripheral<br/>ESP32 I2C Controller]
+ *     
+ *     A --> B
+ *     B --> C
+ *     C --> D
+ *     
+ *     style B fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
+ *     
+ *     note1[Device Management<br/>Byte/Bit/Word Operations<br/>Error Handling & Validation]
+ *     B -.-> note1
+ *     
+ *     style note1 fill:#fff9c4,stroke:#f57f17,stroke-width:1px
+ * @endmermaid
  * 
  * @section i2c_modules API Modules
  * 
