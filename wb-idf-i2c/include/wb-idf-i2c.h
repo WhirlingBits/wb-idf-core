@@ -3,10 +3,6 @@
  * @brief Whirlingbits I2C Driver API for ESP-IDF
  * @author Whirlingbits
  * @date 2024
- *
- * @ingroup wb_idf_core
- * 
- * @{
  */
 
 #ifndef _I2C_BUS_H_
@@ -25,6 +21,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/**
+ * @defgroup wb_idf_i2c I2C Master Driver
+ * @ingroup wb_idf_core
+ * 
+ * @note Complete documentation with examples and hardware setup is available in wb-idf-i2c.dox
+ * @{
+ */
 
 extern i2c_master_bus_handle_t bus_handle;
 
@@ -175,7 +179,7 @@ esp_err_t wb_i2c_master_bus_read_multiple_bytes(i2c_master_dev_handle_t dev_hand
  */
 esp_err_t wb_i2c_master_bus_write_multiple_bytes(i2c_master_dev_handle_t dev_handle, uint8_t mem_address, uint8_t* data, uint8_t length);
 
-/** @} */ // end of wb_i2c_byte
+/** @} */ // end of wb_idf_i2c_byte
 
 /**
  * @defgroup wb_idf_i2c_bit Bit Operations
