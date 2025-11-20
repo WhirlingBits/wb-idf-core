@@ -1,6 +1,5 @@
 /**
  * @file wb-idf-i2c.h
- * @brief Whirlingbits I2C Driver API for ESP-IDF
  * @author Whirlingbits
  * @date 2024
  */
@@ -23,10 +22,8 @@ extern "C" {
 #endif
 
 /**
- * @defgroup wb_idf_i2c I2C Master Driver
  * @ingroup wb_idf_core
  * 
- * @note Complete documentation with examples and hardware setup is available in wb-idf-i2c.dox
  * @{
  */
 
