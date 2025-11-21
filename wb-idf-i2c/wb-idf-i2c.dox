@@ -30,7 +30,7 @@
  * 
  * The driver follows a layered architecture:
  * 
- * @mermaid
+ * @code
  * graph TD
  *     A[Application Layer<br/>Your sensor/device drivers]
  *     B[wb-idf-i2c High-Level API<br/>This Component]
@@ -47,7 +47,7 @@
  *     B -.-> note1
  *     
  *     style note1 fill:#fff9c4,stroke:#f57f17,stroke-width:1px
- * @endmermaid
+ * @endcode
  * 
  * @section i2c_modules API Modules
  * 
