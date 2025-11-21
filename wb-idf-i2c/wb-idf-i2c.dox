@@ -30,24 +30,19 @@
  * 
  * The driver follows a layered architecture:
  * 
- * @code
+ * @verbatim
  * graph TD
- *     A["Application Layer"]
- *     B["wb-idf-i2c API"]
- *     C["ESP-IDF I2C Driver"]
- *     D["I2C Hardware"]
+ *     A[Application Layer]
+ *     B[wb-idf-i2c API]
+ *     C[ESP-IDF I2C Driver]
+ *     D[I2C Hardware]
  *     
  *     A --> B
  *     B --> C
  *     C --> D
  *     
  *     style B fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
- *     
- *     note1["Device Management | Byte/Bit/Word Ops | Error Handling"]
- *     B -.-> note1
- *     
- *     style note1 fill:#fff9c4,stroke:#f57f17,stroke-width:1px
- * @endcode
+ * @endverbatim
  * 
  * @section i2c_modules API Modules
  * 
