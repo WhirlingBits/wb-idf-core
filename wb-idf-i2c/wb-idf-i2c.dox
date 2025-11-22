@@ -41,7 +41,7 @@
  *     B --> C
  *     C --> D
  *     
- *     style B fill:#25C2A0,stroke:#FFFFFF,stroke-width:1px
+ *     style B fill:#25C2A0,stroke:none
  * @endverbatim
  * 
  * @section i2c_modules API Modules
@@ -173,38 +173,54 @@
  * @subsection i2c_wiring Typical Wiring
  * 
  * @verbatim
- * graph LR
- *     subgraph ESP32
- *         GPIO21[GPIO21 SDA]
- *         GPIO22[GPIO22 SCL]
- *         VCC_ESP[3.3V]
- *         GND_ESP[GND]
+ * graph TD
+ *     %% Styling Definitions
+ *     classDef mcu fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#01579b
+ *     classDef device fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c
+ *     classDef power fill:#ffebee,stroke:#b71c1c,stroke-width:1px,color:#b71c1c
+ *     classDef resistor fill:#fff,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5
+ *     classDef bus fill:none,stroke:#333,stroke-width:3px
+ * 
+ *     subgraph Board [ESP32 Board]
+ *         direction TB
+ *         ESP_3V3((3.3V)):::power
+ *         ESP_GND((GND)):::power
+ *         ESP_SDA[GPIO 21 / SDA]:::mcu
+ *         ESP_SCL[GPIO 22 / SCL]:::mcu
  *     end
  * 
- *     subgraph Device [I2C Device]
- *         SDA_DEV[SDA]
- *         SCL_DEV[SCL]
- *         VCC_DEV[VCC]
- *         GND_DEV[GND]
+ *     subgraph I2C_Bus [I2C Bus Lines]
+ *         direction TB
+ *         R_SDA[4.7kΩ Pull-up]:::resistor
+ *         R_SCL[4.7kΩ Pull-up]:::resistor
  *     end
  * 
- *     %% Signal Lines (Thick lines)
- *     GPIO21 ==> SDA_DEV
- *     GPIO22 ==> SCL_DEV
- *     
- *     %% Power Lines
- *     VCC_ESP --> VCC_DEV
- *     GND_ESP --> GND_DEV
+ *     subgraph Sensor [I2C Device]
+ *         direction TB
+ *         DEV_VCC((VCC)):::power
+ *         DEV_GND((GND)):::power
+ *         DEV_SDA[SDA]:::device
+ *         DEV_SCL[SCL]:::device
+ *     end
  * 
- *     %% Pull-up Resistors (Dotted lines to show they tap into the line)
- *     R1(4.7kΩ)
- *     R2(4.7kΩ)
- * 
- *     GPIO21 -.-> R1 -.-> VCC_ESP
- *     GPIO22 -.-> R2 -.-> VCC_ESP
+ *     %% Power Connections
+ *     ESP_3V3 --> DEV_VCC
+ *     ESP_GND --> DEV_GND
  *     
- *     style R1 fill:#fff,stroke:#333,stroke-dasharray: 5 5
- *     style R2 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+ *     %% Pull-up Connections
+ *     ESP_3V3 --- R_SDA
+ *     ESP_3V3 --- R_SCL
+ *     
+ *     %% Signal Connections
+ *     ESP_SDA === R_SDA
+ *     R_SDA === DEV_SDA
+ *     
+ *     ESP_SCL === R_SCL
+ *     R_SCL === DEV_SCL
+ *     
+ *     linkStyle 0,1 stroke:#b71c1c,stroke-width:1px
+ *     linkStyle 2,3 stroke:#b71c1c,stroke-width:1px,stroke-dasharray: 2 2
+ *     linkStyle 4,5,6,7 stroke:#333,stroke-width:3px
  * @endverbatim
  * 
  * **Pull-up Resistor Guidelines:**
