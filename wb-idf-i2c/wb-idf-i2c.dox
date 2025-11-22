@@ -41,7 +41,7 @@
  *     B --> C
  *     C --> D
  *     
- *     style B fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
+ *     style B fill:#25C2A0,stroke:#FFFFFF,stroke-width:1px
  * @endverbatim
  * 
  * @section i2c_modules API Modules
@@ -172,18 +172,40 @@
  * 
  * @subsection i2c_wiring Typical Wiring
  * 
- * @code{.txt}
- * ESP32 Pin      I2C Device Pin      Pull-up
- * ─────────      ──────────────      ───────
- * GPIO21 (SDA) ──────┬─────── SDA
- *                    │              4.7kΩ to 3.3V
- *                    
- * GPIO22 (SCL) ──────┬─────── SCL
- *                    │              4.7kΩ to 3.3V
+ * @verbatim
+ * graph LR
+ *     subgraph ESP32
+ *         GPIO21[GPIO21 SDA]
+ *         GPIO22[GPIO22 SCL]
+ *         VCC_ESP[3.3V]
+ *         GND_ESP[GND]
+ *     end
  * 
- * 3.3V ──────────────┴─────── VCC
- * GND ──────────────────────── GND
- * @endcode
+ *     subgraph Device [I2C Device]
+ *         SDA_DEV[SDA]
+ *         SCL_DEV[SCL]
+ *         VCC_DEV[VCC]
+ *         GND_DEV[GND]
+ *     end
+ * 
+ *     %% Signal Lines (Thick lines)
+ *     GPIO21 ==> SDA_DEV
+ *     GPIO22 ==> SCL_DEV
+ *     
+ *     %% Power Lines
+ *     VCC_ESP --> VCC_DEV
+ *     GND_ESP --> GND_DEV
+ * 
+ *     %% Pull-up Resistors (Dotted lines to show they tap into the line)
+ *     R1(4.7kΩ)
+ *     R2(4.7kΩ)
+ * 
+ *     GPIO21 -.-> R1 -.-> VCC_ESP
+ *     GPIO22 -.-> R2 -.-> VCC_ESP
+ *     
+ *     style R1 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+ *     style R2 fill:#fff,stroke:#333,stroke-dasharray: 5 5
+ * @endverbatim
  * 
  * **Pull-up Resistor Guidelines:**
  * 
