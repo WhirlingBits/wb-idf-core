@@ -4,8 +4,8 @@
  * @date 2024
  */
 
-#ifndef _I2C_BUS_H_
-#define _I2C_BUS_H_
+#ifndef _WB_IDF_I2C_BUS_H_
+#define _WB_IDF_I2C_BUS_H_
 
 #include <stdio.h>
 #include <string.h>
@@ -361,4 +361,4 @@ esp_err_t wb_i2c_master_bus_write_word_bits(i2c_master_dev_handle_t dev_handle, 
 }
 #endif
 
-#endif // _I2C_BUS_H_
+#endif // _WB_IDF_I2C_BUS_H_
