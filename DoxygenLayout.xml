@@ -4,17 +4,13 @@
   <navindex>
     <!-- Main Page (Overview) -->
     <tab type="mainpage" visible="yes" title="Overview"/>
-    
-    <!-- API Reference als Hauptkategorie -->
-    <tab type="user" url="@ref api_reference" title="API Reference" visible="yes">
-      
-      <!-- I2C Master Driver als Sub-Tab -->
-      <tab type="user" url="@ref wb_idf_i2c" title="I2C Master Driver">
-        <tab type="user" url="@ref wb_idf_i2c_init" title="Initialization"/>
-        <tab type="user" url="@ref wb_idf_i2c_byte" title="Byte Operations"/>
-        <tab type="user" url="@ref wb_idf_i2c_bit" title="Bit Operations"/>
-        <tab type="user" url="@ref wb_idf_i2c_word" title="Word Operations"/>
-      </tab>
+         
+    <!-- I2C Master Driver als Sub-Tab -->
+    <tab type="user" url="@ref wb_idf_i2c" title="I2C Master Driver">
+      <tab type="user" url="@ref wb_idf_i2c_init" title="Initialization"/>
+      <tab type="user" url="@ref wb_idf_i2c_byte" title="Byte Operations"/>
+      <tab type="user" url="@ref wb_idf_i2c_bit" title="Bit Operations"/>
+      <tab type="user" url="@ref wb_idf_i2c_word" title="Word Operations"/>
       
       <!-- Weitere Components als Sub-Tabs -->
       <!-- Beispiele (auskommentiert, bei Bedarf aktivieren): -->
