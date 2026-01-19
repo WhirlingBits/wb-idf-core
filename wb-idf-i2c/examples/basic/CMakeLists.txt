@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(EXTRA_COMPONENT_DIRS "../../wb-idf-i2c")
+set(EXTRA_COMPONENT_DIRS "../../")
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(WB-IDF-I2C-EXAMPLE)
