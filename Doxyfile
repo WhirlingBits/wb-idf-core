@@ -50,7 +50,15 @@ INPUT                  = ./wb-idf-core.dox \
                          ./wb-idf-i2c/wb-idf-i2c.dox \
                          ./wb-idf-i2c/include \
                          ./wb-idf-i2c/src \
-                         ./wb-idf-i2c/examples
+                         ./wb-idf-i2c/examples \
+                         ./wb-idf-sntp/wb-idf-sntp.dox \
+                         ./wb-idf-sntp/include \
+                         ./wb-idf-sntp/src \
+                         ./wb-idf-sntp/examples \
+                         ./wb-idf-wlan/wb-idf-wlan.dox \
+                         ./wb-idf-wlan/include \
+                         ./wb-idf-wlan/src \
+                         ./wb-idf-wlan/examples
 
 RECURSIVE              = YES
 
@@ -68,7 +76,9 @@ EXCLUDE_PATTERNS       = */tests/* \
                          */.git/* \
                          */node_modules/*
 
-EXAMPLE_PATH           = ./wb-idf-i2c/examples
+EXAMPLE_PATH           = ./wb-idf-i2c/examples \
+                         ./wb-idf-sntp/examples \
+                         ./wb-idf-wlan/examples
 
 EXAMPLE_PATTERNS       = *.c \
                          *.cpp \

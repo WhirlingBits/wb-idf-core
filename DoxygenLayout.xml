@@ -18,6 +18,16 @@
       <!-- <tab type="user" url="@ref wb_idf_uart" title="UART Driver"/> -->
       <!-- <tab type="user" url="@ref wb_idf_gpio" title="GPIO Driver"/> -->
     </tab>
+
+    <!-- WLAN Driver -->
+    <tab type="user" url="@ref wb_idf_wlan" title="WLAN Driver">
+      <tab type="user" url="@ref wb_idf_wlan" title="Initialization &amp; Management"/>
+    </tab>
+
+    <!-- SNTP Client -->
+    <tab type="user" url="@ref wb_idf_sntp" title="SNTP Client">
+      <tab type="user" url="@ref wb_idf_sntp_init" title="Initialization"/>
+    </tab>
     
     <!-- Optional: Zusätzliche Standard-Tabs (falls benötigt) -->
     <!-- <tab type="modules" visible="yes" title="All Modules"/> -->
