@@ -1,4 +1,4 @@
-menu "WLAN Configuration"
+menu "WB-WLAN Configuration"
 	menu "STATION"
 		config STATION_ESP_WIFI_SSID
         string "WiFi SSID"
