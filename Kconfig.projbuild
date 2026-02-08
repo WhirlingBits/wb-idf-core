@@ -1,0 +1,7 @@
+menu "WB-IDF-CORE"
+
+rsource "wb-idf-i2c/Kconfig.projbuild"
+rsource "wb-idf-ntp/Kconfig.projbuilds"
+rsource "wb-idf-wlan/Kconfig.projbuilds"
+
+endmenu
