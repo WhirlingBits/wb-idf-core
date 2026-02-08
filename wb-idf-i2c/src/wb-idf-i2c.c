@@ -91,7 +91,7 @@ esp_err_t wb_i2c_master_bus_write_byte(i2c_master_dev_handle_t dev_handle, uint8
 
 esp_err_t wb_i2c_master_bus_read_multiple_bytes(i2c_master_dev_handle_t dev_handle, uint8_t mem_address, uint8_t data[], uint8_t length)
 {
-    //noch nicht fertig
+    //not tested
     uint8_t buf[1] = {mem_address};
     esp_err_t ret = i2c_master_transmit_receive(dev_handle, buf, 1, data, length, CONFIG_WB_IDF_I2C_TIMEOUT_MS); 
     return ret;
@@ -99,7 +99,7 @@ esp_err_t wb_i2c_master_bus_read_multiple_bytes(i2c_master_dev_handle_t dev_hand
 
 esp_err_t wb_i2c_master_bus_write_multiple_bytes(i2c_master_dev_handle_t dev_handle, uint8_t mem_address, uint8_t* data, uint8_t length)
 {
-    // noch nicht fertig
+    //not tested
     uint8_t size = length+1;
     uint8_t buffer[size];
     buffer[0] = mem_address;
