@@ -4,6 +4,19 @@
  * @date 2024
  */
 
+/**
+ * @ingroup wb_idf_core
+ * 
+ * @{
+ */
+
+/**
+ * @defgroup wb_idf_i2c_init Initialization & Management
+ * @ingroup wb_idf_i2c
+ * @brief Functions for I2C bus and device initialization
+ * @{
+ */
+
 #ifndef _WB_IDF_I2C_BUS_H_
 #define _WB_IDF_I2C_BUS_H_
 
@@ -21,20 +34,10 @@
 extern "C" {
 #endif
 
-/**
- * @ingroup wb_idf_core
- * 
- * @{
- */
+
 
 extern i2c_master_bus_handle_t bus_handle;
 
-/**
- * @defgroup wb_idf_i2c_init Initialization & Management
- * @ingroup wb_idf_i2c
- * @brief Functions for I2C bus and device initialization
- * @{
- */
 
 /**
  * @brief Initializes the I2C master bus
