@@ -4,7 +4,7 @@
 #include <esp_system.h>
 #include <string.h>
 #include "esp_log.h"
-#include <wb-idf-i2c.h>
+#include "wb-idf-i2c.h"
 
 static const char* TAG = "WB_IDF_I2C_EXAMPLE";
 
@@ -16,5 +16,5 @@ void app_main(void)
 {
     //Initialise I2C Bus
     wb_i2c_master_bus_init(I2C_WB_PORT, I2C_WB_SCL, I2C_WB_SDA);
-
+    ESP_LOGI(TAG, "I2C bus initialized on port %d", I2C_WB_PORT);
 }
